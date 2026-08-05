@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cakoi | Official Site</title>
+<meta name="description" content="広島で活動するシンガーソングライター cakoi のオフィシャルサイト。最新シングル「rétro / Green Light Freedom」配信中。Apple Music・Spotify ほか各ストリーミングサービスで聴けます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* アー写のギター（ペルハムブルー）をベースにした爽やかな配色 */
+    --bg-top: #eef7f9;
+    --bg-bottom: #cfe5eb;
+    --card: #ffffff;
+    --text: #22434e;
+    --text-dim: #5c7a84;
+    --accent: #2e7e97;
+    --accent-soft: #6ba7b5;
+    --line: rgba(34, 67, 78, 0.16);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+    color: var(--text);
+    font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+    font-weight: 400;
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+  }
+  .latin { font-family: "Outfit", sans-serif; }
+
+  /* 背景のギター：スクロールしても固定で残るパララックス */
+  .guitar-bg {
+    position: fixed;
+    inset: 0;
+    background: url("assets/guitar_bg.png") no-repeat right 6% center;
+    background-size: auto 88%;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 72px 0; }
+
+  /* ヒーロー */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .hero h1 {
+    font-family: "Outfit", sans-serif;
+    font-weight: 500;
+    font-size: clamp(60px, 15vw, 110px);
+    letter-spacing: 0.14em;
+    line-height: 1.1;
+    color: var(--text);
+  }
+  .hero .tagline {
+    margin-top: 18px;
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    font-family: "Outfit", sans-serif;
+    font-weight: 300;
+  }
+  .hero .scroll-hint {
+    margin-top: 64px;
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    font-family: "Outfit", sans-serif;
+    animation: floaty 2.6s ease-in-out infinite;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+
+  /* 見出し */
+  .section-title {
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 36px;
+  }
+
+  /* 最新リリース */
+  .release-note {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+  }
+  .player-frame {
+    width: 100%;
+    max-width: 660px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 0;
+    box-shadow: 0 10px 30px rgba(34, 67, 78, 0.15);
+  }
+
+  /* 配信リンク */
+  .links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    font-family: "Outfit", "Zen Kaku Gothic New", sans-serif;
+    background: var(--card);
+    box-shadow: 0 4px 14px rgba(34, 67, 78, 0.08);
+    transition: border-color 0.25s, color 0.25s, transform 0.25s;
+  }
+  .link-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ディスコグラフィー */
+  .disc-list { display: grid; gap: 28px; }
+  .disc-item iframe {
+    width: 100%;
+    max-width: 660px;
+    height: 175px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 0;
+    box-shadow: 0 10px 30px rgba(34, 67, 78, 0.15);
+  }
+
+  /* プロフィール */
+  .profile-layout { display: grid; gap: 28px; }
+  .profile-photo img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 14px;
+    box-shadow: 0 12px 36px rgba(34, 67, 78, 0.2);
+  }
+  .profile-text { font-size: 15px; }
+  .profile-text p + p { margin-top: 1em; }
+  @media (min-width: 600px) {
+    .profile-layout { grid-template-columns: 5fr 7fr; align-items: center; }
+    .links-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* SNS・お問い合わせ */
+  .sns-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .sns-row .link-btn { min-width: 140px; }
+  .contact-note {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    box-shadow: 0 8px 20px rgba(46, 126, 151, 0.35);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(46, 126, 151, 0.45);
+  }
+
+  footer {
+    padding: 48px 24px 40px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-family: "Outfit", sans-serif;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="guitar-bg" aria-hidden="true"></div>
+
+<header class="hero">
+  <h1>cakoi</h1>
+  <p class="tagline">SINGER SONGWRITER</p>
+  <p class="scroll-hint">SCROLL ↓</p>
+</header>
+
+<main>
+  <section id="release">
+    <div class="container">
+      <h2 class="section-title">NEW RELEASE</h2>
+      <p class="section-sub">最新シングル</p>
+      <p class="release-note">「rétro / Green Light Freedom」— 2026.07.25 配信開始。下のプレイヤーからそのまま試聴できます。</p>
+      <iframe class="player-frame" height="300" loading="lazy"
+        allow="autoplay *; encrypted-media *;"
+        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+        src="https://embed.music.apple.com/jp/album/r%C3%A9tro-green-ligh-freedom-single/6792870925"></iframe>
+    </div>
+  </section>
+
+  <section id="listen">
+    <div class="container">
+      <h2 class="section-title">LISTEN</h2>
+      <p class="section-sub">各サービスで配信中</p>
+      <div class="links-grid">
+        <a class="link-btn" href="https://music.apple.com/jp/artist/cakoi/1850458358" target="_blank" rel="noopener">Apple Music</a>
+        <a class="link-btn" href="https://open.spotify.com/intl-ja/artist/2E2vZzEbDyOVxNjqviY2sW" target="_blank" rel="noopener">Spotify</a>
+        <a class="link-btn" href="https://music.amazon.co.jp/artists/B0FYM983G7/cakoi" target="_blank" rel="noopener">Amazon Music</a>
+        <a class="link-btn" href="https://lin.ee/SsB3iCB" target="_blank" rel="noopener">LINE MUSIC</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="discography">
+    <div class="container">
+      <h2 class="section-title">DISCOGRAPHY</h2>
+      <p class="section-sub">これまでのリリース</p>
+      <div class="disc-list">
+        <div class="disc-item">
+          <iframe loading="lazy"
+            allow="autoplay *; encrypted-media *;"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/jp/album/%E3%83%88%E3%83%A9%E3%83%9A%E3%82%B8%E3%82%A6%E3%83%A0-trapezium-single/1879510077"></iframe>
+        </div>
+        <div class="disc-item">
+          <iframe loading="lazy"
+            allow="autoplay *; encrypted-media *;"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/jp/album/world-is-here-single/1862143122"></iframe>
+        </div>
+        <div class="disc-item">
+          <iframe loading="lazy"
+            allow="autoplay *; encrypted-media *;"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/jp/album/%E9%9B%BB%E5%81%9C%E5%89%8D%E3%81%AE%E6%A1%9C-single/1850458852"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="profile">
+    <div class="container">
+      <h2 class="section-title">PROFILE</h2>
+      <p class="section-sub">cakoi について</p>
+      <div class="profile-layout">
+        <div class="profile-photo">
+          <img src="assets/cakoi_artist.jpg" alt="cakoi アーティスト写真" loading="lazy">
+        </div>
+        <div class="profile-text">
+          <p>広島で活動をしているシンガーソングライター。20歳のころギターを初めて手に取り、作詞作曲をはじめ、関東でバンド活動を行う。</p>
+          <p>その後広島に拠点を移し、日々生活の歌をつくり歌っている。現在はcakoiBANDとして、様々なイベントで精力的に演奏している。</p>
+          <p>紅白歌合戦への出場を目指し、12月31日はいつもスケジュールを開けている。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sns">
+    <div class="container">
+      <h2 class="section-title">FOLLOW</h2>
+      <p class="section-sub">SNS</p>
+      <div class="sns-row">
+        <a class="link-btn" href="https://x.com/sekai_league" target="_blank" rel="noopener">X</a>
+        <a class="link-btn" href="https://www.instagram.com/cakoi_sekai/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">CONTACT</h2>
+      <p class="section-sub">お問い合わせ</p>
+      <p class="contact-note">ライブやコラボのご相談など、お気軽にどうぞ。</p>
+      <a class="contact-btn" href="mailto:cakoi.miyachi@me.com">メールで問い合わせる</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 cakoi
+</footer>
+
+</body>
+</html>

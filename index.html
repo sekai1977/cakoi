@@ -116,6 +116,32 @@
     box-shadow: 0 10px 30px rgba(34, 67, 78, 0.15);
   }
 
+  /* ライブ情報 */
+  .live-list { display: grid; gap: 18px; }
+  .live-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: center;
+    padding: 20px 22px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(34, 67, 78, 0.08);
+  }
+  .live-date {
+    font-family: "Outfit", sans-serif;
+    text-align: center;
+    color: var(--accent);
+    line-height: 1.2;
+    min-width: 74px;
+  }
+  .live-date .month-day { font-size: 26px; font-weight: 600; display: block; }
+  .live-date .year-dow { font-size: 12px; letter-spacing: 0.1em; display: block; margin-top: 4px; color: var(--text-dim); }
+  .live-name { font-size: 16px; font-weight: 500; }
+  .live-meta { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  .live-meta a { color: var(--accent); }
+
   /* 配信リンク */
   .links-grid {
     display: grid;
@@ -235,6 +261,26 @@
         allow="autoplay *; encrypted-media *;"
         sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
         src="https://embed.music.apple.com/jp/album/r%C3%A9tro-green-ligh-freedom-single/6792870925"></iframe>
+    </div>
+  </section>
+
+  <section id="live">
+    <div class="container">
+      <h2 class="section-title">LIVE</h2>
+      <p class="section-sub">ライブ情報</p>
+      <div class="live-list">
+        <div class="live-item">
+          <div class="live-date">
+            <span class="month-day">8.8</span>
+            <span class="year-dow">2026 SAT</span>
+          </div>
+          <div>
+            <p class="live-name">よこがわ川夏フェス（ガワフェス2026）— cakoiBAND出演</p>
+            <p class="live-meta">12:30〜20:00｜横川胡子神社東側〜楠木大雁木河岸一帯（広島・横川）｜入場無料 ※荒天時は翌9日に順延</p>
+            <p class="live-meta"><a href="https://k-o-y-kanpai.com/gawafess_2026/" target="_blank" rel="noopener">詳細情報はこちら →</a></p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

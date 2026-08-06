@@ -218,13 +218,46 @@
     .links-grid { grid-template-columns: repeat(4, 1fr); }
   }
 
-  /* SNS・お問い合わせ */
-  .sns-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
+  /* Instagram・お問い合わせ */
+  .insta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    border-radius: 16px;
+    text-decoration: none;
+    background: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 14px rgba(34, 67, 78, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
   }
-  .sns-row .link-btn { min-width: 140px; }
+  .insta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(34, 67, 78, 0.15);
+  }
+  .insta-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(45deg, #f9ce34, #ee2a7b 50%, #6228d7);
+    flex-shrink: 0;
+  }
+  .insta-handle {
+    display: block;
+    font-family: "Outfit", sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--text);
+  }
+  .insta-note {
+    display: block;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
   .contact-note {
     font-size: 14px;
     color: var(--text-dim);
@@ -366,12 +399,21 @@
 
   <section id="sns">
     <div class="container">
-      <h2 class="section-title">FOLLOW</h2>
-      <p class="section-sub">SNS</p>
-      <div class="sns-row">
-        <a class="link-btn" href="https://x.com/sekai_league" target="_blank" rel="noopener">X</a>
-        <a class="link-btn" href="https://www.instagram.com/cakoi_sekai/" target="_blank" rel="noopener">Instagram</a>
-      </div>
+      <h2 class="section-title">INSTAGRAM</h2>
+      <p class="section-sub">フォローはこちら</p>
+      <a class="insta-btn" href="https://www.instagram.com/cakoi_sekai/" target="_blank" rel="noopener">
+        <span class="insta-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/>
+            <circle cx="12" cy="12" r="4.6"/>
+            <circle cx="17.6" cy="6.4" r="1.15" fill="#ffffff" stroke="none"/>
+          </svg>
+        </span>
+        <span class="insta-text">
+          <span class="insta-handle">@cakoi_sekai</span>
+          <span class="insta-note">最新情報・ライブの様子はInstagramで</span>
+        </span>
+      </a>
     </div>
   </section>
 

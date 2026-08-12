@@ -146,6 +146,7 @@
   }
   .live-date .month-day { font-size: 26px; font-weight: 600; display: block; }
   .live-date .year-dow { font-size: 12px; letter-spacing: 0.1em; display: block; margin-top: 4px; color: var(--text-dim); }
+  .live-date .live-ended { display: block; margin-top: 6px; font-size: 14px; font-weight: 700; color: #d64545; letter-spacing: 0.1em; }
   .live-name { font-size: 16px; font-weight: 500; }
   .live-meta { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
   .live-meta a { color: var(--accent); }
@@ -159,6 +160,47 @@
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(34, 67, 78, 0.15);
     background: #000;
+  }
+
+  /* ライブ映像（YouTube 2×2） */
+  .live-videos-note {
+    margin-top: 36px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+  .yt-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .yt-item {
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(34, 67, 78, 0.12);
+  }
+  .yt-embed {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+  }
+  .yt-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .yt-caption {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  @media (min-width: 600px) {
+    .yt-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   }
 
   /* 配信リンク */
@@ -325,6 +367,7 @@
           <div class="live-date">
             <span class="month-day">8.8</span>
             <span class="year-dow">2026 SAT</span>
+            <span class="live-ended">終了</span>
           </div>
           <div>
             <p class="live-name">よこがわ川夏フェス（ガワフェス2026）— cakoiBAND出演</p>
@@ -337,6 +380,42 @@
         <source src="assets/cakoiband.mp4" type="video/mp4">
         お使いのブラウザは動画再生に対応していません。
       </video>
+
+      <p class="live-videos-note">▶ ガワフェス2026 ライブ映像</p>
+      <div class="yt-grid">
+        <div class="yt-item">
+          <div class="yt-embed">
+            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/RIqt-RVUzrA"
+              title="WORLD IS HERE｜ガワフェス2026 cakoiBAND"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="yt-caption">WORLD IS HERE</p>
+        </div>
+        <div class="yt-item">
+          <div class="yt-embed">
+            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/THSPonhvOm4"
+              title="君に会いにいこう｜ガワフェス2026 cakoiBAND"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="yt-caption">君に会いにいこう</p>
+        </div>
+        <div class="yt-item">
+          <div class="yt-embed">
+            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/5gEPF2dGdRY"
+              title="ルージュの伝言｜ガワフェス2026 cakoiBAND"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="yt-caption">ルージュの伝言</p>
+        </div>
+        <div class="yt-item">
+          <div class="yt-embed">
+            <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/7QuWMeWjcDA"
+              title="横川のうた｜ガワフェス2026 cakoiBAND"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="yt-caption">横川のうた</p>
+        </div>
+      </div>
     </div>
   </section>
 

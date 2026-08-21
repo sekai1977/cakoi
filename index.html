@@ -151,6 +151,61 @@
   .live-meta { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
   .live-meta a { color: var(--accent); }
 
+  /* チラシサムネ＆拡大 */
+  .flyer-thumb {
+    display: inline-block;
+    margin-top: 12px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 0;
+    box-shadow: 0 4px 12px rgba(34, 67, 78, 0.18);
+    cursor: zoom-in;
+    transition: transform 0.2s;
+  }
+  .flyer-thumb:hover { transform: translateY(-2px); }
+  .flyer-thumb img { width: 120px; height: auto; display: block; }
+  .flyer-hint {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 4px 6px;
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
+    color: #fff;
+    background: rgba(34, 67, 78, 0.72);
+    letter-spacing: 0.04em;
+  }
+  /* ライトボックス */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(12, 30, 37, 0.9);
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    font-size: 34px;
+    line-height: 1;
+    color: #fff;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
   /* 配信リンク */
   .links-grid {
     display: grid;
@@ -313,6 +368,20 @@
       <div class="live-list">
         <div class="live-item">
           <div class="live-date">
+            <span class="month-day">10.10</span>
+            <span class="year-dow">2026 SAT</span>
+          </div>
+          <div>
+            <p class="live-name">ありんこフェス（龍頭峡 小さな音楽 Vol.5）— cakoiBAND出演</p>
+            <p class="live-meta">11:30 START／演奏 13:00〜15:00｜筒賀ふれあい農園（広島・安芸太田町）｜入場無料 ※雨天時は交流館で開催</p>
+            <a class="flyer-thumb" href="assets/arinko-flyer.jpg" data-flyer="assets/arinko-flyer.jpg" aria-label="ありんこフェスのチラシを拡大表示">
+              <img src="assets/arinko-flyer-thumb.jpg" alt="ありんこフェス チラシ" loading="lazy">
+              <span class="flyer-hint">チラシを拡大 ⤢</span>
+            </a>
+          </div>
+        </div>
+        <div class="live-item">
+          <div class="live-date">
             <span class="month-day">8.8</span>
             <span class="year-dow">2026 SAT</span>
             <span class="live-ended">終了</span>
@@ -418,5 +487,26 @@
   © 2026 cakoi
 </footer>
 
+<div class="lightbox" id="flyer-lightbox" role="dialog" aria-modal="true" aria-label="チラシ拡大表示">
+  <button class="lightbox-close" aria-label="閉じる">&times;</button>
+  <img src="" alt="チラシ拡大">
+</div>
+<script>
+  (function () {
+    var lb = document.getElementById('flyer-lightbox');
+    if (!lb) return;
+    var lbImg = lb.querySelector('img');
+    function open(src) { lbImg.src = src; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close() { lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; }
+    document.querySelectorAll('.flyer-thumb').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        open(a.getAttribute('data-flyer') || a.getAttribute('href'));
+      });
+    });
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
+</script>
 </body>
 </html>

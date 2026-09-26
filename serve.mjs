@@ -29,4 +29,4 @@ createServer(async (req, res) => {
     res.writeHead(404);
     res.end('Not Found');
   }
-}).listen(8933, () => console.log('cakoi-lp preview on http://localhost:8933'));
+}).listen(8933, '127.0.0.1', () => console.log('cakoi-lp preview on http://127.0.0.1:8933'));
